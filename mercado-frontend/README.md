@@ -1,4 +1,4 @@
-# ML Test Backend (Node/Express)
+# ML Test Frontend (React)
 
 ML Test requires [Node.js](https://nodejs.org/) to run.
 
@@ -10,3 +10,5 @@ Install the dependencies and devDependencies and start the server.
 npm i
 node run start
 ```
+
+It runs on http://localhost:3000

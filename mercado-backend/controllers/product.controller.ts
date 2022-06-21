@@ -85,7 +85,7 @@ const searchProductById = async (filter: any) => {
         category_id,
       } = productFound;
 
-      console.log("category_id", category_id);
+
 
       let description = "";
       const responseDescription = await axios.get(

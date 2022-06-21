@@ -55,7 +55,6 @@ const searchProductById = (filter) => __awaiter(void 0, void 0, void 0, function
         if (response.status === 200) {
             let productFound = response.data[0].body;
             const { id, title, price, currency_id, secure_thumbnail, thumbnail, pictures, condition, shipping, sold_quantity, category_id, } = productFound;
-            console.log("category_id", category_id);
             let description = "";
             const responseDescription = yield axios.get(`${API}${SEARCH_BY_ID}?ids=${filter.ids}/description`);
             if (responseDescription.status === 200) {

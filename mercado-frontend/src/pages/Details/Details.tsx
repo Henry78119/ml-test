@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { MLImg } from "../../components/MLImg/MLImg.styled";
 import {
   Header,
@@ -23,24 +23,14 @@ import Search from "../../assets/ic_Search@2x.png.png.png";
 import MLTextField from "../../components/MLTextField/MLTextField";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import {
-  API,
-  PORT,
-  SEARCH_PRODUCTS,
-  SEARCH_PRODUCTS_LIMIT,
-  SEARCH_PRODUCT_BY_ID,
-} from "../../config/api";
-import { HorizontalLine, MSpacing, SSpacing, XSSpacing } from "../../components/Spacing.styled";
+import { API, PORT, SEARCH_PRODUCT_BY_ID } from "../../config/api";
+import { SSpacing, XSSpacing } from "../../components/Spacing.styled";
 import MLCurrencyFormat from "../../components/MLCurrencyFormat/MLCurrencyFormat";
 import { MLLink, MLText } from "../../components/Typography.styled";
 
 const Details = () => {
   const navigate = useNavigate();
   let { id } = useParams();
-  console.log(id);
-
-  // let params = new URLSearchParams(useLocation().search);
-  // const searchParam = params.get("search");
 
   const [filterBy, setFilterBy] = useState("");
   const [categories, setCategories] = useState([]);
@@ -49,12 +39,6 @@ const Details = () => {
   useEffect(() => {
     searchProduct(id);
   }, [id]);
-
-  // useEffect(() => {
-  //   console.log(filterBy);
-  //   onClickSearch();
-  //   // eslint-disable-next-line
-  // }, [searchParam]);
 
   const onClickSearch = () => {
     if (filterBy !== null) {
@@ -93,7 +77,6 @@ const Details = () => {
         withCredentials: false,
       })
         .then((res) => {
-          console.log(res);
           setCategories(res.data?.found?.item?.categories);
           setItem(res.data?.found?.item);
         })
@@ -107,7 +90,6 @@ const Details = () => {
 
   const handleKeyDown = (event: any) => {
     if (event.key === "Enter") {
-      console.log("do validate");
       onClickSearch();
     }
   };
@@ -157,7 +139,6 @@ const Details = () => {
         </ComponentContainer>
       </Header>
 
-      {/* <SSpacing /> */}
       <BreadcrumbLayout>{breadcrumbList}</BreadcrumbLayout>
 
       <ProductLayout>
@@ -209,47 +190,6 @@ const Details = () => {
             </ProductItemColumnContent>
           </ProductItemColumn>
         </ProductItemRow>
-        {/* {items.map((item, index) => {
-          return (
-            <div key={index}>
-              <ProductItemRow className="bg-white">
-                <ProductItemColumn className="w-25">
-                  <ProductItemColumnContent>
-                    <MLImg
-                      src={item[0].picture}
-                      alt="Search-logo"
-                      width={"15rem"}
-                      height={"15rem"}
-                    ></MLImg>
-                  </ProductItemColumnContent>
-                </ProductItemColumn>
-                <ProductItemColumn className="w-75 p-1">
-                  <ProductItemColumnContent className="w-start">
-                    <MLCurrencyFormat
-                      value={String(item[0].price?.amount)}
-                      thousandSeparator={"."}
-                      decimalSeparator={","}
-                      prefix={"$"}
-                      renderText={(value: any) => <MLText>{value}</MLText>}
-                    />
-                  </ProductItemColumnContent>
-
-                  <ProductItemColumnContent className="w-start">
-                    <MLLink
-                      className="xs"
-                      onClick={() => {
-                        navigate("/items/" + item[0].id);
-                      }}
-                    >
-                      {item[0]?.title}
-                    </MLLink>
-                  </ProductItemColumnContent>
-                </ProductItemColumn>
-              </ProductItemRow>
-              <HorizontalLine className="my-0" />
-            </div>
-          );
-        })} */}
       </ProductLayout>
     </HomeLayout>
   );

@@ -41,7 +41,6 @@ const Home = () => {
   const [items, setItems] = useState<any[]>([]);
 
   useEffect(() => {
-    console.log(filterBy);
     onClickSearch();
     // eslint-disable-next-line
   }, [searchParam]);
@@ -83,7 +82,6 @@ const Home = () => {
         withCredentials: false,
       })
         .then((res) => {
-          console.log(res);
           setCategories(res.data?.found?.categories);
           setItems(res.data?.found?.items);
         })
@@ -97,7 +95,6 @@ const Home = () => {
 
   const handleKeyDown = (event: any) => {
     if (event.key === "Enter") {
-      console.log("do validate");
       onClickSearch();
     }
   };
