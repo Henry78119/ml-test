@@ -81,6 +81,7 @@ export const ProductLayout = styled.div`
   flex-direction: column;
   margin-left: 10%;
   margin-right: 10%;
+  background-color: white;
   border-radius: 0.5rem;
 `;
 
@@ -130,7 +131,36 @@ export const ProductItemColumnContent = styled.div`
   }
 `;
 
+export const DescriptionContent = styled.div`
+  text-align: justify;
+  text-justify: inter-word;
+`;
+
 export const ProductItemColumnContent2 = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+export const MLButton = styled.button`
+  // eventually remove this margin and handle it within containers
+  margin: 1.2rem 0;
+  background: var(--ml-blue);
+  color: white;
+  font-family: inherit;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+  /* white-space: nowrap; */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 31.5rem;
+  min-height: 2.6rem;
+  padding: 0.2em;
+  font-size: 1.2rem;
+  //font-weight: 700;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid transparent;
 `;

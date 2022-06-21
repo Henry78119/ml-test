@@ -82,7 +82,10 @@ const searchProductById = async (filter: any) => {
         condition,
         shipping,
         sold_quantity,
+        category_id,
       } = productFound;
+
+      console.log("category_id", category_id);
 
       let description = "";
       const responseDescription = await axios.get(
@@ -90,6 +93,14 @@ const searchProductById = async (filter: any) => {
       );
       if (responseDescription.status === 200) {
         description = responseDescription.data[0].body.plain_text;
+      }
+
+      let categories = "";
+      const responseCategories = await axios.get(
+        `${API}${SEARCH_BY_CATEGORY}${category_id}`
+      );
+      if (responseCategories.status === 200) {
+        categories = responseCategories.data.path_from_root.map((itemP: any)=> itemP.name);
       }
 
       let item = {
@@ -107,7 +118,9 @@ const searchProductById = async (filter: any) => {
         condition,
         free_shipping: shipping.free_shipping,
         sold_quantity,
+        category_id,
         description,
+        categories
       };
 
       return {

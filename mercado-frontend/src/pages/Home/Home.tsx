@@ -47,13 +47,11 @@ const Home = () => {
   }, [searchParam]);
 
   const onClickSearch = () => {
-    navigate("/items?search=" + filterBy);
-    searchProduct(filterBy);
+    if (filterBy !== null) {
+      navigate("/items?search=" + filterBy);
+      searchProduct(filterBy);
+    }
   };
-
-  useEffect(() => {
-    console.log(categories);
-  }, [categories]);
 
   const breadcrumbList = categories.map((item, index) => {
     return (

@@ -5,6 +5,10 @@ const commonStyles = css`
   overflow-wrap: break-word;
   line-height: 1.2;
 
+  &.xxxs {
+    font-size: 0.8rem;
+  }
+
   &.xxs {
     font-size: 1.2rem;
   }

@@ -1,4 +1,4 @@
-# ML Test Backend (Node/Express)
+# ML Test Frontend (React)
 
 ML Test requires [Node.js](https://nodejs.org/) to run.
 
